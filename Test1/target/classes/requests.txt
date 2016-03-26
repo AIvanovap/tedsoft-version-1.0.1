@@ -1,4 +1,0 @@
--- CREATE TABLE classes (class_id INTEGER PRIMARY KEY, classname CHARACTER VARYING NOT NULL )
--- CREATE TABLE keywords(keyword_id INTEGER PRIMARY KEY , keyword CHARACTER VARYING, binded_class INTEGER REFERENCES classes(class_id))
--- INSERT INTO classes(class_id, classname) VALUES (1, 'ie.globalcom.Bell')
-INSERT INTO keywords (keyword_id, keyword, binded_class) VALUES (1, 'ring', 1)
