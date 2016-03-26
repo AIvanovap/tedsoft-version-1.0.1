@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html>
+<title>Web Page</title>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <script type="text/javascript" src="js/jquery-1.12.2.js"></script>
+    <script type="text/javascript" src="js/device.js"></script>
+    <script type="text/javascript" src="js/classmap.js"></script>
+    <script type="text/javascript">
+        var map = new Map();
+
+        getNameClass = function() {
+//            $.ajax({
+//                url: 'http://localhost:9001/v1/class',
+//                type: 'GET',
+//                success: function (response) {
+//                    response.forEach(function getObj(obj,response){
+//                        map.put(obj.classame, new Device(obj));
+//                        console.log(obj.classname)
+//                    });
+//                },
+//                error: function () {
+//                    alert("Error in request")
+//                }
+//            });
+
+            $.ajax({
+                url: 'http://localhost:9001/v1/class',
+                type: 'POST',
+                data: document.getElementById('name').value,
+                success: function (response) {
+                    var device = new Device(response);
+                    console.log(device.name + "  " + device.status);
+                    if (map.get(device.name)!=undefined){
+                        device = map.get(device.name);
+                        device.turn();
+                        document.getElementById('qw').value = device.getMessage();
+                    }else{
+                        device.turn();
+                        map.put(device.name, device);
+                        document.getElementById('qw').value = device.getMessage();
+                    }
+                },
+                error: function () {
+                    alert("Undefined keyword")
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>My jQuery JSON Web Page</h1>
+<button type="button" onclick="getNameClass()">SEND</button>
+<input id="name" type="text"><br>
+Response:<br>
+<p><textarea rows="5" name="S1" cols="28" id="qw"></textarea></p>
+</body>
+</html>
