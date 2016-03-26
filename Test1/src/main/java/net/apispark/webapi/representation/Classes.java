@@ -1,8 +1,7 @@
 package net.apispark.webapi.representation;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
+
 @Entity
 @Table(name = "classes")
 @NamedQueries({
@@ -11,7 +10,6 @@ import javax.persistence.*;
 })
 
 public class Classes {
-    /** Default serial version ID. */
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

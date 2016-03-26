@@ -43,7 +43,6 @@ public class ClassServerResource extends AbstractServerResource implements Class
     public String getArrayName() throws IOException {
         checkGroups(post1AllowedGroups, post1DeniedGroups);
         JSONArray list = fillArrayJson();
-
         return list.toString();
     }
 
@@ -71,6 +70,5 @@ public class ClassServerResource extends AbstractServerResource implements Class
         }
         return array;
     }
-
 }
 
